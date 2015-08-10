@@ -4,12 +4,12 @@
  * and open the template in the editor.
  */
 
-package com.javacodegeeks.snippets.enterprise.View;
+package ch.zhaw.mediarus.view;
 /**
  *
  * @author buef
  */
-public class Page extends Component{
+public class Page extends View{
 
 
     public Page(String title, String css) {
@@ -20,26 +20,25 @@ public class Page extends Component{
                 + "     <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">"
                 + "     <title>"+ title +"</title>\n"
                 + "    </head>\n"
-                + "<body>\n";
+                + "<body>\n"
+                + "<div class=\"container\">\n"
+                + "<h1>Mediarus</h1>";
+    }
+    
+    public void insertComponent(String v) {
+        code += v;
     }
     
     
 
     
     public void endPage() {
-        code += "</body>\n"
+        code += "</div>"
+                + "</body>\n"
                 + "</html>";
     }
+
     
-    
-    public static void main(String[] args) {
-        Page page = new Page("Hallo Welt", "css.css");
-        
-        
-        page.endPage();
-        
-        
-    }
 }
 
 

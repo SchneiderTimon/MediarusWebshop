@@ -3,12 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.javacodegeeks.enterprise.Model;
+package ch.zhaw.mediarus.view;
 
 /**
  *
  * @author scnt
  */
-public class Model {
+public class View {
+    String code;
+    
+    public View() {
+        code="";
+    }
+    
+    public String getCode() {
+        return code;
+    }
     
 }

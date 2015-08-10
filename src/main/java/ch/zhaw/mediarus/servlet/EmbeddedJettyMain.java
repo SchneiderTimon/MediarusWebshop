@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.javacodegeeks.snippets.enterprise.jetty2;
+package ch.zhaw.mediarus.servlet;
 
 /**
  *
@@ -19,8 +19,8 @@ public class EmbeddedJettyMain {
 	public static void main(String[] args) throws Exception {
 
 		Server server = new Server(7073);
-		ServletContextHandler handler = new ServletContextHandler(server, "/example");
-		handler.addServlet(ExampleServlet.class, "/hello world");
+		ServletContextHandler handler = new ServletContextHandler(server, "/mediarus");
+		handler.addServlet(ExampleServlet.class, "/");
 		server.start();
 
 	}

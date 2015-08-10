@@ -30,7 +30,7 @@ public class DAO {
     private ResultSet rs = null;
 
     public DAO() {
-        System.out.println("2");
+        
         try {
             Class.forName("com.mysql.jdbc.Driver");
             // setup the connection with the DB.

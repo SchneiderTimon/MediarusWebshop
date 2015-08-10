@@ -12,19 +12,25 @@
     </properties>
     <dependencies>
 
-		<!--Jetty  dependencies start here-->
-		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-server</artifactId>
-			<version>9.2.11.v20150529</version>
-		</dependency>
+        <!--Jetty  dependencies start here-->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-server</artifactId>
+            <version>9.2.11.v20150529</version>
+        </dependency>
 
-		<dependency>
-			<groupId>org.eclipse.jetty</groupId>
-			<artifactId>jetty-servlet</artifactId>
-			<version>9.2.11.v20150529</version>
-		</dependency>
-		<!--Jetty  dependencies end here-->
+        <dependency>
+            <groupId>org.eclipse.jetty</groupId>
+            <artifactId>jetty-servlet</artifactId>
+            <version>9.2.11.v20150529</version>
+        </dependency>
+        <!--Jetty  dependencies end here-->
+                
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.6</version>
+        </dependency>
 
-	</dependencies>
+    </dependencies>
 </project>

@@ -17,14 +17,13 @@ import java.util.List;
  */
 public class TableModel {
     DAO dao;
-    TableView tv;
 
     public TableModel() {
         dao = new DAO();
-        tv = new TableView(new String []{"Title", "Author", "Publisher", "Category"});
+        
     }
     
-    public void insertBooks(String title, String author, String category) {
+    public void insertBooks(String title, String author, String category, TableView tv) {
         List<Book> list = dao.getBooks(title, author, category);
         for(Book b: list) {
             tv.insertRow(new String[]{b.getTitle(), b.getAuthor(), b.getPublisher(), b.getCategorie()});

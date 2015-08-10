@@ -40,7 +40,6 @@ public class ExampleServlet extends HttpServlet {
         tv.insertRow(row1);
         tv.insertRow(row2);
         
-        page.insertComponent(tv.generateCode());
         
         page.endPage();
         resp.getWriter().println(page.getCode());

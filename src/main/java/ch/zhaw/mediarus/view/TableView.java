@@ -37,10 +37,12 @@ public class TableView extends View{
         
     }
     
-    public void insertRow(String[] row) {
-        code += "           <tr>\n";
+    public void insertRow(int id, String[] row) {
+        code += "           <tr\">\n";
         for(int i = 0; i < row.length; i++)
-            code+="             <a href=\"#\"><th>"+row[i]+"</th></a>\n";
+            code+="             <th>"+row[i]+"</th>\n";
+        
+        code+="                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"Book/?book_id="+ id +"\"></a></th>";
         
         code += "           </tr>\n";
     }

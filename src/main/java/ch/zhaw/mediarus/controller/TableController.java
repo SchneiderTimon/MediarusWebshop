@@ -62,6 +62,8 @@ public class TableController extends HttpServlet{
         
         tv.render(resp.getWriter());
         
+        
+        
         code = "</div>"
                 + "</body>\n"
                 + "</html>";

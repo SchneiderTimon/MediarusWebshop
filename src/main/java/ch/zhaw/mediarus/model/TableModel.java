@@ -26,7 +26,7 @@ public class TableModel {
     public void insertBooks(String title, String author, String category, TableView tv) {
         List<Book> list = dao.getBooks(title, author, category);
         for(Book b: list) {
-            tv.insertRow(new String[]{b.getTitle(), b.getAuthor(), b.getPublisher(), b.getCategorie()});
+            tv.insertRow(b.getId(), new String[]{b.getTitle(), b.getAuthor(), b.getPublisher(), b.getCategorie()});
         }
     } 
     

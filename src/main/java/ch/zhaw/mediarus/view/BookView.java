@@ -5,29 +5,31 @@
  */
 package ch.zhaw.mediarus.view;
 
+import ch.zhaw.mediarus.model.BookModel;
+
 /**
  *
  * @author buef
  */
 public class BookView extends View{
 
-    public BookView(String[] titles, String[] values) {
+    public BookView(BookModel bm) {
         super();
         code += "<div id=\"BookView\" class=\"col-md-6\">\n"
-                + "<h2>"+ values[0] + "</h2>"
+                + "<h2>"+ bm.getValues()[0] + "</h2>"
                 +"  <table class=\"table table-bordered\">\n"
                 + "     <tbody>\n";
         
-        for(int i = 1; i < titles.length; i++) {
+        for(int i = 1; i < bm.getTitles().length; i++) {
             code+="          <tr>\n"
-                    +"             <th>"+titles[i]+"</th>\n"
-                    +"              <th>"+values[i]+"</th>\n"
+                    +"             <th>"+bm.getTitles()[i]+"</th>\n"
+                    +"              <th>"+bm.getValues()[i]+"</th>\n"
                     +"      </tr>\n";
         }
         code += "     </tbody>\n"
                 + "</table>\n"
                 +"  <div class=\"form-inline pull-right\">\n"
-                +"      <form action=\"bucket\" method=\"GET\">\n"
+                +"      <form action=\"../bucket/\" method=\"GET\">\n"
                 +"          <button type=\"submit\" class=\"btn btn-default\" id=\"buyButton\">Add to Bucket</button>\n"
                 +"      </form>\n"
                 +"  </div>\n"

@@ -11,6 +11,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 /**
@@ -45,33 +46,35 @@ public class DAO {
 
              
 
-            String query = "SELECT b.id, b.title, b.author, b.publisher, b.release_date, b.language, b.weight, b.isbn, b.number_of_pages, c.title FROM books b JOIN categories c ON b.categorie_fk = c.id ";
+            String query = "SELECT id, title, author, publisher, release_date, language, weight, isbn, number_of_pages, category, price FROM books ";
             
-            query+= "WHERE b.id = "+id+";";
+            query+= "WHERE id = "+id+";";
             
             st = conn.createStatement();
             rs = st.executeQuery(query);
             
              while (rs.next()) {
-                b.setId(rs.getInt("b.id"));
+                b.setId(rs.getInt("id"));
 
-                b.setTitle(rs.getString("b.title"));
+                b.setTitle(rs.getString("title"));
                 
-                b.setAuthor(rs.getString("b.author"));
+                b.setAuthor(rs.getString("author"));
 
-                b.setPublisher(rs.getString("b.publisher"));
+                b.setPublisher(rs.getString("publisher"));
 
-                b.setReleaseDate(rs.getString("b.release_date"));
+                b.setReleaseDate(rs.getString("release_date"));
 
-                b.setLanguage(rs.getString("b.language"));
+                b.setLanguage(rs.getString("language"));
 
-                b.setWeight(rs.getString("b.weight"));
+                b.setWeight(rs.getString("weight"));
 
-                b.setISBN(rs.getString("b.isbn"));
+                b.setISBN(rs.getString("isbn"));
 
-                b.setNumberOfPages(rs.getInt("b.number_of_pages"));
+                b.setNumberOfPages(rs.getInt("number_of_pages"));
 
-                b.setCategorie(rs.getString("c.title"));
+                b.setCategorie(rs.getString("category"));
+                
+                b.setPrice(rs.getFloat("price"));
             }
              
              st.close();
@@ -85,20 +88,22 @@ public class DAO {
         return b;
     }
 
-    public ArrayList<Book> getBooks(String title, String author, String category) {
-        ArrayList<Book> list = new ArrayList<Book>();
+    public List<Book> getBooks(String title, String author, String category) {
+        List<Book> list = new ArrayList<>();
+        
+        
 
         try {
 
 
-            String query = "SELECT b.id, b.title, b.author, b.publisher, b.release_date, b.language, b.weight, b.isbn, b.number_of_pages, c.title FROM books b JOIN categories c ON b.categorie_fk = c.id ";
+            String query = "SELECT id, title, author, publisher, release_date, language, weight, isbn, number_of_pages, category, price FROM books ";
 
             
-                query += "WHERE b.title LIKE '%"+ title +"%'";
+                query += "WHERE title LIKE '%"+ title +"%'";
             
-                query += "AND b.author LIKE '%"+ author +"%'";
+                query += "AND author LIKE '%"+ author +"%'";
             
-                query += "AND c.title LIKE '%"+ category +"%'";
+                query += "AND category LIKE '%"+ category +"%'";
             
             
             st = conn.createStatement();
@@ -106,25 +111,27 @@ public class DAO {
 
             while (rs.next()) {
                 Book b = new Book();
-                b.setId(rs.getInt("b.id"));
+                b.setId(rs.getInt("id"));
 
-                b.setTitle(rs.getString("b.title"));
+                b.setTitle(rs.getString("title"));
                 
-                b.setAuthor(rs.getString("b.author"));
+                b.setAuthor(rs.getString("author"));
 
-                b.setPublisher(rs.getString("b.publisher"));
+                b.setPublisher(rs.getString("publisher"));
 
-                b.setReleaseDate(rs.getString("b.release_date"));
+                b.setReleaseDate(rs.getString("release_date"));
 
-                b.setLanguage(rs.getString("b.language"));
+                b.setLanguage(rs.getString("language"));
 
-                b.setWeight(rs.getString("b.weight"));
+                b.setWeight(rs.getString("weight"));
 
-                b.setISBN(rs.getString("b.isbn"));
+                b.setISBN(rs.getString("isbn"));
 
-                b.setNumberOfPages(rs.getInt("b.number_of_pages"));
+                b.setNumberOfPages(rs.getInt("number_of_pages"));
 
-                b.setCategorie(rs.getString("c.title"));
+                b.setCategorie(rs.getString("category"));
+                
+                b.setPrice(rs.getFloat("price"));
 
                 list.add(b);
             }

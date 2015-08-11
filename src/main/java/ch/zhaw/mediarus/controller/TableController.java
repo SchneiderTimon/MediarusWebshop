@@ -5,6 +5,7 @@
  */
 package ch.zhaw.mediarus.controller;
 
+import ch.zhaw.mediarus.dao.DAO;
 import ch.zhaw.mediarus.model.TableModel;
 import ch.zhaw.mediarus.view.TableView;
 import java.io.IOException;
@@ -29,9 +30,6 @@ public class TableController extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(HttpStatus.OK_200);
         
-        TableModel tm = new TableModel();
-        TableView tv = new TableView(new String []{"Title", "Author", "Publisher", "Category"});
-        
         String title = "";
         String author = "";
         String category = "";
@@ -45,7 +43,13 @@ public class TableController extends HttpServlet{
         if (req.getParameter("search_input_category") != null)
             category = req.getParameter("search_input_category");
         
-        tm.insertBooks(title, author, category, tv);
+        DAO db = new DAO();
+        TableModel tm = new TableModel();
+        tm.fillList(db.getBooks( title, author, category));
+        
+        TableView tv = new TableView(new String []{"Title", "Author", "Publisher", "Category"}, tm);
+        
+    
         
         
         tv.render(resp.getWriter());

@@ -20,7 +20,7 @@ public class Book {
     private String ISBN;
     private int numberOfPages;
     private String categorie;
-
+    private float price;
     
     
     public Book(){
@@ -158,6 +158,14 @@ public class Book {
 
     public void setCategorie(String categorie) {
         this.categorie = categorie;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
     
     

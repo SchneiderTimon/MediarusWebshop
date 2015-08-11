@@ -16,20 +16,21 @@ import java.util.List;
  * @author buef
  */
 public class TableModel {
-    DAO dao;
+    List<Book> books;
 
     public TableModel() {
-        dao = new DAO();
-        
+        books = new ArrayList<>();
     }
     
-    public void insertBooks(String title, String author, String category, TableView tv) {
-        List<Book> list = dao.getBooks(title, author, category);
-        for(Book b: list) {
-            tv.insertRow(b.getId(), new String[]{b.getTitle(), b.getAuthor(), b.getPublisher(), b.getCategorie()});
-        }
-    } 
-    
-    
-    
+    public void fillList(List<Book> list) {
+        books = list;
+    }
+
+    public List<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<Book> books) {
+        this.books = books;
+    }
 }

@@ -5,6 +5,8 @@
  */
 package ch.zhaw.mediarus.view;
 
+import ch.zhaw.mediarus.dao.Book;
+import ch.zhaw.mediarus.model.TableModel;
 import java.io.PrintWriter;
 
 /**
@@ -13,7 +15,7 @@ import java.io.PrintWriter;
  */
 public class TableView extends View{
 
-    public TableView(String[] columnTitles) {
+    public TableView(String[] columnTitles, TableModel tm) {
         super();
         code += "<div id=\"TableView\">\n"
                 +"  <div class=\"form-inline pull-right\">\n"
@@ -34,17 +36,23 @@ public class TableView extends View{
         code +="            </tr>\n"
                 +"      </thead>\n"
                 +"      <tbody>\n";
-    }
-    
-    public void insertRow(int id, String[] row) {
-        code += "           <tr>\n";
-        for(int i = 0; i < row.length; i++)
-            code+="             <th>"+row[i]+"</th>\n";
         
-        code+="                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"book/?book_id="+ id +"\"></a></th>";
         
-        code += "           </tr>\n";
+
+        for(Book b: tm.getBooks()) {
+            code += "           <tr>\n";
+            code+="             <th>"+b.getTitle()+"</th>\n"
+                +"              <th>"+b.getAuthor()+"</th>\n"
+                +"              <th>"+b.getPublisher()+"</th>\n"
+                +"              <th>"+b.getCategorie()+"</th>\n"
+                +"                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"book/?book_id="+ b.getId() +"\"></a></th>";
+            code += "           </tr>\n";
+        }
+        
+     
+        
     }
+
     
     public void closeTable() {
         code+= "</tbody>\n"

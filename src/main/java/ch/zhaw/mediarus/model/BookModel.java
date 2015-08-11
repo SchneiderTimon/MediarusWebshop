@@ -13,19 +13,17 @@ import ch.zhaw.mediarus.dao.DAO;
  * @author buef
  */
 public class BookModel {
-    DAO dao;
+    Book b;
 
-    public BookModel() {
-        dao = new DAO();
+    public BookModel(Book book) {
+        this.b = book;
     }
-    
     public String[] getTitles() {
-        return new String[] {"Title", "Author", "Publisher", "Release_date", "Language", "Weight", "ISBN", "Number of Pages", "Category"};
+        return new String[] {"Title", "Author", "Publisher", "Release_date", "Language", "Weight", "ISBN", "Number of Pages", "Category", "Price"};
     }
     
-    public String[] getValues(int id) {
-        Book b = dao.getBookByID(id);
-        return new String [] {b.getTitle(), b.getAuthor(), b.getPublisher(), b.getReleaseDate(), b.getLanguage(), b.getWeight(), b.getISBN(), b.getNumberOfPages()+"", b.getCategorie()};
+    public String[] getValues() {
+        return new String [] {b.getTitle(), b.getAuthor(), b.getPublisher(), b.getReleaseDate(), b.getLanguage(), b.getWeight(), b.getISBN(), b.getNumberOfPages()+"", b.getCategorie(), b.getPrice()+""};
     }
     
 }

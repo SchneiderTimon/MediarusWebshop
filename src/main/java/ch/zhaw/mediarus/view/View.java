@@ -5,6 +5,8 @@
  */
 package ch.zhaw.mediarus.view;
 
+import java.io.PrintWriter;
+
 /**
  *
  * @author scnt
@@ -13,11 +15,22 @@ public class View {
     String code;
     
     public View() {
-        code="";
+        code="<html>\n"
+                + "<head>\n"
+                + "     <meta charset=\"utf-8\" />\n"
+                + "     <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">"
+                + "     <title>mediarus</title>\n"
+                + "    </head>\n"
+                + "<body>\n"
+                + " <div class=\"container\">\n"
+                + " <h1>Mediarus</h1>";
     }
     
-    public String getCode() {
-        return code;
+    public void render(PrintWriter pw) {
+        code += "</div>"
+                + "</body>\n"
+                + "</html>";
+        pw.print(code);
     }
     
 }

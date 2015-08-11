@@ -46,14 +46,4 @@ public class TableView extends View{
         
         code += "           </tr>\n";
     }
-    
-    public void generateCode() {
-        code +="        </tbody>\n"
-                +"  </table>\n"
-                +"</div>\n";
-    }
-    
-    public void render(PrintWriter pw) {
-        pw.print(code);
-    }
 }

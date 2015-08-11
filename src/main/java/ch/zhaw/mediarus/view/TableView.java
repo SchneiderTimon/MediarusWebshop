@@ -34,16 +34,21 @@ public class TableView extends View{
         code +="            </tr>\n"
                 +"      </thead>\n"
                 +"      <tbody>\n";
-        
     }
     
     public void insertRow(int id, String[] row) {
-        code += "           <tr\">\n";
+        code += "           <tr>\n";
         for(int i = 0; i < row.length; i++)
             code+="             <th>"+row[i]+"</th>\n";
         
-        code+="                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"Book/?book_id="+ id +"\"></a></th>";
+        code+="                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"book/?book_id="+ id +"\"></a></th>";
         
         code += "           </tr>\n";
+    }
+    
+    public void closeTable() {
+        code+= "</tbody>\n"
+                + "</table>\n"
+                + "</div>\n";
     }
 }

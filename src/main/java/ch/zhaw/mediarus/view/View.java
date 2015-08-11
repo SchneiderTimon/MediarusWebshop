@@ -23,13 +23,13 @@ public class View {
                 + "    </head>\n"
                 + "<body>\n"
                 + " <div class=\"container\">\n"
-                + " <h1>Mediarus</h1>";
+                + " <h1 class=\"text-center\">Mediarus</h1>\n";
     }
     
     public void render(PrintWriter pw) {
         code += "</div>"
                 + "</body>\n"
-                + "</html>";
+                + "</html>\n";
         pw.print(code);
     }
     

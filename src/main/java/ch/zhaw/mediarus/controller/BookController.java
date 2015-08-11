@@ -5,7 +5,9 @@
  */
 package ch.zhaw.mediarus.controller;
 
+import ch.zhaw.mediarus.model.BookModel;
 import ch.zhaw.mediarus.model.TableModel;
+import ch.zhaw.mediarus.view.BookView;
 import ch.zhaw.mediarus.view.TableView;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -26,13 +28,13 @@ public class BookController extends HttpServlet{
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(HttpStatus.OK_200);
         
+        BookModel bm = new BookModel();
         
-        resp.getWriter().print("hallo Welt");
+        BookView bv = new BookView(bm.getTitles(), bm.getValues(Integer.parseInt(req.getParameter("book_id"))));
         
         
         
-
-        
+        bv.render(resp.getWriter());    
         
     }
     

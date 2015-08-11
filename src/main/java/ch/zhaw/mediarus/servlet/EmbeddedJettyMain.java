@@ -23,7 +23,7 @@ public class EmbeddedJettyMain {
 		Server server = new Server(7073);
 		ServletContextHandler handler = new ServletContextHandler(server, "/mediarus");
 		handler.addServlet(TableController.class, "/");
-                handler.addServlet(BookController.class, "/Book/");
+                handler.addServlet(BookController.class, "/book/");
 		server.start();
 
 	}

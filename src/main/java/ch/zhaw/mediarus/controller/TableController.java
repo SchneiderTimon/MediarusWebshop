@@ -47,28 +47,8 @@ public class TableController extends HttpServlet{
         
         tm.insertBooks(title, author, category, tv);
         
-        String code = "<html>\n"
-                + "<head>\n"
-                + "     <meta charset=\"utf-8\" />\n"
-                + "	<link rel=\"stylesheet\" type=\"text/css\" />\n"
-                + "     <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">"
-                + "     <title>Mediarus</title>\n"
-                + "    </head>\n"
-                + "<body>\n"
-                + "<div class=\"container\">\n"
-                + "<h1>Mediarus</h1>";
-        
-        resp.getWriter().print(code);
         
         tv.render(resp.getWriter());
-        
-        
-        
-        code = "</div>"
-                + "</body>\n"
-                + "</html>";
-        
-        resp.getWriter().print(code);
         
         
     }

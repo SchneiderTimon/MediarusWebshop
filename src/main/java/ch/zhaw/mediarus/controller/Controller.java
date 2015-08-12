@@ -27,10 +27,12 @@ public class Controller {
     List<ContainableView> content;
     
     public Controller() {
+        System.out.println("3");
 
         this.dao = new DAO();
         
         this.content = new ArrayList<>();
+        System.out.println("4");
     }
     
     public void setUpContent() {

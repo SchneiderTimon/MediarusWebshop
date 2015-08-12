@@ -6,6 +6,7 @@
 package ch.zhaw.mediarus.view;
 
 import ch.zhaw.mediarus.model.BookModel;
+import ch.zhaw.mediarus.serlvet.MediarusServlet;
 import java.io.PrintWriter;
 
 /**
@@ -19,7 +20,7 @@ public class BookView extends ContainableView{
         this.bm = bm;
     }
     
-    public void render(PrintWriter pw) {
+    public void render() {
         pw.print("<div id=\"BookView\" class=\"col-md-6 col-md-offset-3\">\n"         
 
                 + "         <h2 class=\"text-center\">"+ bm.getValues()[0] + "</h2>\n"

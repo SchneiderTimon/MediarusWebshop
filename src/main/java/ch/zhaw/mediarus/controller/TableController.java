@@ -7,6 +7,7 @@ package ch.zhaw.mediarus.controller;
 
 import ch.zhaw.mediarus.dao.DAO;
 import ch.zhaw.mediarus.model.TableModel;
+import ch.zhaw.mediarus.serlvet.MediarusServlet;
 import ch.zhaw.mediarus.view.ContainableView;
 import ch.zhaw.mediarus.view.TableView;
 import ch.zhaw.mediarus.view.Page;
@@ -33,21 +34,21 @@ public class TableController extends Controller{
     
     
 
-    public TableController(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public TableController() {
         super();
                 
         title = "";
         author = "";
         category = "";
         
-        if (req.getParameter("search_input_title") != null)
-            title = req.getParameter("search_input_title");
+        if (MediarusServlet.getRequest().getParameter("search_input_title") != null)
+            title = MediarusServlet.getRequest().getParameter("search_input_title");
         
-        if (req.getParameter("search_input_author") != null)
-            author = req.getParameter("search_input_author");
+        if (MediarusServlet.getRequest().getParameter("search_input_author") != null)
+            author = MediarusServlet.getRequest().getParameter("search_input_author");
         
-        if (req.getParameter("search_input_category") != null)
-            category = req.getParameter("search_input_category");
+        if (MediarusServlet.getRequest().getParameter("search_input_category") != null)
+            category = MediarusServlet.getRequest().getParameter("search_input_category");
         
     }
 

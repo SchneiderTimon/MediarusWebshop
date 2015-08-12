@@ -29,11 +29,9 @@ import org.eclipse.jetty.http.HttpStatus;
  */
 public class BookController extends Controller{
     
-    public BookController(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public BookController()  {
+        
         super();
-        
-       
-        
     }
 
     @Override

@@ -13,7 +13,7 @@ import java.io.IOException;
  */
 public class ContainableView extends View{
 
-    public ContainableView() throws IOException {
+    public ContainableView(){
         super();
     }
 }

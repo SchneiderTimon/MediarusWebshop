@@ -7,6 +7,7 @@ package ch.zhaw.mediarus.view;
 
 import ch.zhaw.mediarus.dao.Book;
 import ch.zhaw.mediarus.model.TableModel;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
@@ -51,7 +52,7 @@ public class TableView extends ContainableView {
                     + "              <th>" + b.getAuthor() + "</th>\n"
                     + "              <th>" + b.getPublisher() + "</th>\n"
                     + "              <th>" + b.getCategorie() + "</th>\n"
-                    + "                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"book/?book_id=" + b.getId() + "\"></a></th>"
+                    + "                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"BookController/?book_id=" + b.getId() + "\"></a></th>"
                     + "           </tr>\n");
         }
         

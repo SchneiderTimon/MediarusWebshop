@@ -21,59 +21,46 @@ import org.eclipse.jetty.http.HttpStatus;
  *
  * @author buef
  */
-public class MediarusServlet extends HttpServlet{
+public class MediarusServlet extends HttpServlet {
+
     Controller c;
-    
+
     private static ThreadLocal<HttpServletRequest> req = new ThreadLocal<>();
     private static ThreadLocal<HttpServletResponse> resp = new ThreadLocal<>();
-    
-    
+
     public static HttpServletRequest getRequest() {
         return req.get();
     }
+
     public static HttpServletResponse getResp() {
         return resp.get();
     }
-    
-    
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(HttpStatus.OK_200);
-        
+
         this.req.set(req);
         this.resp.set(resp);
-        
-            try {
-                Class< ? > cl = Class.forName("ch.zhaw.mediarus.controller." + "BookController");
-                c = (Controller) cl.newInstance();
-                c.setUpContent();
-                c.printPage();
-                
-            } catch (InstantiationException ex) {
-                Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IllegalAccessException ex) {
-                Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-        
-    }
-    
-    
-    public static void main(String[] args) {
+
         try {
-            Class cl = Class.forName("java.awt.Rectangle");
-            java.awt.Rectangle c = cl.newInstance();
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
+
+            String requestedObject = getRequest().getRequestURI();
+            requestedObject = requestedObject.replace("/mediarus/", "");
+            requestedObject = requestedObject.replace("/", "");
+            Class cl = Class.forName("ch.zhaw.mediarus.controller." + requestedObject);
+            c = (Controller) cl.newInstance();
+            c.setUpContent();
+            c.printPage();
+
         } catch (InstantiationException ex) {
             Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-                
+
     }
-    
+
 }

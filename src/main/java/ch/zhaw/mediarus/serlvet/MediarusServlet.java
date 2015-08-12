@@ -27,9 +27,14 @@ public class MediarusServlet extends HttpServlet{
     private static ThreadLocal<HttpServletRequest> req = new ThreadLocal<>();
     private static ThreadLocal<HttpServletResponse> resp = new ThreadLocal<>();
     
+    
     public static HttpServletRequest getRequest() {
         return req.get();
     }
+    public static HttpServletResponse getResp() {
+        return resp.get();
+    }
+    
     
 
     @Override
@@ -37,10 +42,9 @@ public class MediarusServlet extends HttpServlet{
         resp.setStatus(HttpStatus.OK_200);
         
         this.req.set(req);
-        
+        this.resp.set(resp);
         
             try {
-                req.getRequestURI();
                 Class< ? > cl = Class.forName("ch.zhaw.mediarus.controller." + "BookController");
                 c = (Controller) cl.newInstance();
                 c.setUpContent();
@@ -57,5 +61,20 @@ public class MediarusServlet extends HttpServlet{
         
     }
     
+    
+    public static void main(String[] args) {
+        Class< ? > cl;
+        try {
+            cl = Class.forName("javax.servlet.http.HttpServletRequest");
+            Object c = cl.newInstance();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+                
+    }
     
 }

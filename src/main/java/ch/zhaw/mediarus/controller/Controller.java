@@ -21,15 +21,13 @@ import javax.servlet.http.HttpServletResponse;
  * @author buef
  */
 public class Controller {
-    HttpServletRequest req;
-    HttpServletResponse resp;
+
     DAO dao;
     
     List<ContainableView> content;
     
-    public Controller(HttpServletRequest req, HttpServletResponse resp) throws ServletException {
-        this.req = req;
-        this.resp = resp;
+    public Controller() {
+
         this.dao = new DAO();
         
         this.content = new ArrayList<>();
@@ -41,6 +39,6 @@ public class Controller {
     
     public void printPage() throws IOException {
         Page p = new Page(content);
-        p.render(resp.getWriter());
+        p.render();
     }
 }

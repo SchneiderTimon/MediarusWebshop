@@ -18,11 +18,12 @@ public class TableView extends ContainableView {
     TableModel tm;
 
     public TableView(TableModel tm) {
+        super();
         this.tm = tm;
     }
 
     @Override
-    public void render(PrintWriter pw) {
+    public void render() {
         pw.print("<div id=\"TableView\">\n"
                 + "  <div class=\"form-inline pull-right\">\n"
                 + "      <form action=\"#\" method=\"GET\">\n"

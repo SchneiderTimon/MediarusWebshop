@@ -5,12 +5,15 @@
  */
 package ch.zhaw.mediarus.view;
 
+import java.io.IOException;
+
 /**
  *
  * @author buef
  */
 public class ContainableView extends View{
 
-    public ContainableView() {
+    public ContainableView() throws IOException {
+        super();
     }
 }

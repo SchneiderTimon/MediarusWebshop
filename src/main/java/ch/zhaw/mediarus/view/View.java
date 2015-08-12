@@ -5,6 +5,8 @@
  */
 package ch.zhaw.mediarus.view;
 
+import ch.zhaw.mediarus.serlvet.MediarusServlet;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 /**
@@ -13,14 +15,16 @@ import java.io.PrintWriter;
  */
 public class View {
     Page p;
+    PrintWriter pw;
     
-    public View() {
+    public View() throws IOException {
+        pw = MediarusServlet.getResp().getWriter();
 
     }
     
     
     
-    public void render(PrintWriter pw) {
+    protected void render() {
 
     }
 }

@@ -5,6 +5,8 @@
  */
 package ch.zhaw.mediarus.view;
 
+import ch.zhaw.mediarus.serlvet.MediarusServlet;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
@@ -15,7 +17,8 @@ import java.util.List;
 public class Page extends View{
     List<ContainableView> content;
     
-    public Page(List<ContainableView> content) {
+    public Page(List<ContainableView> content) throws IOException {
+        super();
         this.content = content;
     }
     
@@ -28,7 +31,7 @@ public class Page extends View{
     }
     
     @Override
-    public void render(PrintWriter pw) {
+    public void render() {
         pw.print("<html>\n"
                 + "<head>\n"
                 + "     <meta charset=\"utf-8\" />\n"
@@ -40,7 +43,7 @@ public class Page extends View{
                 + " <h1 class=\"text-center\">Mediarus</h1>\n");
         
         for(ContainableView cv: content) {
-            cv.render(pw);
+            cv.render();
         }
         
         pw.print("</div>"

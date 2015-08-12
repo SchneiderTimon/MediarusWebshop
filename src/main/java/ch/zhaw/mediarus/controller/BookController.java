@@ -8,6 +8,7 @@ package ch.zhaw.mediarus.controller;
 import ch.zhaw.mediarus.dao.DAO;
 import ch.zhaw.mediarus.model.BookModel;
 import ch.zhaw.mediarus.model.TableModel;
+import ch.zhaw.mediarus.serlvet.MediarusServlet;
 import ch.zhaw.mediarus.view.BookView;
 import ch.zhaw.mediarus.view.ContainableView;
 import ch.zhaw.mediarus.view.Page;
@@ -29,7 +30,7 @@ import org.eclipse.jetty.http.HttpStatus;
 public class BookController extends Controller{
     
     public BookController(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super(req, resp);
+        super();
         
        
         
@@ -37,7 +38,7 @@ public class BookController extends Controller{
 
     @Override
     public void setUpContent() {
-         BookModel bm = new BookModel(dao.getBookByID(Integer.parseInt(req.getParameter("book_id"))));
+         BookModel bm = new BookModel(dao.getBookByID(Integer.parseInt(MediarusServlet.getRequest().getParameter("book_id"))));
          BookView bv = new BookView(bm);
          content.add(bv);
     }

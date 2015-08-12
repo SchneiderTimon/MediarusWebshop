@@ -34,7 +34,7 @@ public class TableController extends Controller{
     
 
     public TableController(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super(req, resp);
+        super();
                 
         title = "";
         author = "";
@@ -57,7 +57,6 @@ public class TableController extends Controller{
         TableModel tm = new TableModel();
         tm.fillList(dao.getBooks( title, author, category));
         TableView tv = new TableView(tm);
-        System.out.println("hallo");
         content.add(tv);
     }
     

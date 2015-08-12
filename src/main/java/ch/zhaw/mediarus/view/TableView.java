@@ -21,6 +21,7 @@ public class TableView extends ContainableView {
         this.tm = tm;
     }
 
+    @Override
     public void render(PrintWriter pw) {
         pw.print("<div id=\"TableView\">\n"
                 + "  <div class=\"form-inline pull-right\">\n"

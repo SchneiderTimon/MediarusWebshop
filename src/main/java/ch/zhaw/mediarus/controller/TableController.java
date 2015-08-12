@@ -51,6 +51,7 @@ public class TableController extends Controller{
         
     }
 
+    
     @Override
     public void setUpContent() {
         TableModel tm = new TableModel();

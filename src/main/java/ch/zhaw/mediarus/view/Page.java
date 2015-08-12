@@ -27,6 +27,7 @@ public class Page extends View{
         
     }
     
+    @Override
     public void render(PrintWriter pw) {
         pw.print("<html>\n"
                 + "<head>\n"

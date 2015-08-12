@@ -9,6 +9,8 @@ import ch.zhaw.mediarus.controller.BookController;
 import ch.zhaw.mediarus.controller.Controller;
 import ch.zhaw.mediarus.controller.TableController;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -22,26 +24,36 @@ import org.eclipse.jetty.http.HttpStatus;
 public class MediarusServlet extends HttpServlet{
     Controller c;
     
+    private static ThreadLocal<HttpServletRequest> req = new ThreadLocal<>();
+    private static ThreadLocal<HttpServletResponse> resp = new ThreadLocal<>();
+    
+    public static HttpServletRequest getRequest() {
+        return req.get();
+    }
+    
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setStatus(HttpStatus.OK_200);
         
-
+        this.req.set(req);
         
         
+            try {
+                req.getRequestURI();
+                Class< ? > cl = Class.forName("ch.zhaw.mediarus.controller." + "BookController");
+                c = (Controller) cl.newInstance();
+                c.setUpContent();
+                c.printPage();
+                
+            } catch (InstantiationException ex) {
+                Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IllegalAccessException ex) {
+                Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
         
-        if(req.getRequestURI().equals("/mediarus/")) {
-            c = new TableController(req, resp);
-            c.setUpContent();
-            c.printPage();
-        }
-        
-        else if(req.getRequestURI().equals("/mediarus/book/")) {
-            c = new BookController(req, resp);
-            c.setUpContent();
-            c.printPage();
-        }
         
     }
     

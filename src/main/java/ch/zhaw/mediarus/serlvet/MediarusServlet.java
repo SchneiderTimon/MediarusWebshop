@@ -63,10 +63,9 @@ public class MediarusServlet extends HttpServlet{
     
     
     public static void main(String[] args) {
-        Class< ? > cl;
         try {
-            cl = Class.forName("javax.servlet.http.HttpServletRequest");
-            Object c = cl.newInstance();
+            Class cl = Class.forName("java.awt.Rectangle");
+            java.awt.Rectangle c = cl.newInstance();
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(MediarusServlet.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {

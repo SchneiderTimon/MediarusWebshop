@@ -3,24 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ch.zhaw.mediarus.view;
-
-import java.io.PrintWriter;
+package ch.zhaw.mediarus.model;
 
 /**
  *
  * @author buef
  */
-public class View {
-    Page p;
+public class Model {
     
-    public View() {
-
-    }
-    
-    
-    
-    public void render(PrintWriter pw) {
-
-    }
 }

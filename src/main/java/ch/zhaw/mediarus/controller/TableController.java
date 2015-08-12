@@ -7,8 +7,13 @@ package ch.zhaw.mediarus.controller;
 
 import ch.zhaw.mediarus.dao.DAO;
 import ch.zhaw.mediarus.model.TableModel;
+import ch.zhaw.mediarus.view.ContainableView;
 import ch.zhaw.mediarus.view.TableView;
+import ch.zhaw.mediarus.view.Page;
+import ch.zhaw.mediarus.view.View;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,20 +24,21 @@ import org.eclipse.jetty.http.HttpStatus;
  *
  * @author buef
  */
-public class TableController extends HttpServlet{
-    String inputTitle;
-    String inputAuthor;
-    String inputCategory;
+public class TableController extends Controller{
+
+    
+    String title;
+    String author;
+    String category;
     
     
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setStatus(HttpStatus.OK_200);
-        
-        String title = "";
-        String author = "";
-        String category = "";
+    public TableController(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        super(req, resp);
+                
+        title = "";
+        author = "";
+        category = "";
         
         if (req.getParameter("search_input_title") != null)
             title = req.getParameter("search_input_title");
@@ -43,18 +49,15 @@ public class TableController extends HttpServlet{
         if (req.getParameter("search_input_category") != null)
             category = req.getParameter("search_input_category");
         
-        DAO db = new DAO();
+    }
+
+    @Override
+    public void setUpContent() {
         TableModel tm = new TableModel();
-        tm.fillList(db.getBooks( title, author, category));
-        
-        TableView tv = new TableView(new String []{"Title", "Author", "Publisher", "Category"}, tm);
-        
-    
-        
-        
-        tv.render(resp.getWriter());
-        
-        
+        tm.fillList(dao.getBooks( title, author, category));
+        TableView tv = new TableView(tm);
+        System.out.println("hallo");
+        content.add(tv);
     }
     
     

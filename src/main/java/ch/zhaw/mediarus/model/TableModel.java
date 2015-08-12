@@ -15,8 +15,10 @@ import java.util.List;
  *
  * @author buef
  */
-public class TableModel {
+public class TableModel extends Model{
     List<Book> books;
+    
+    String titles[] = {"Title", "Author", "Publisher", "Category"};
 
     public TableModel() {
         books = new ArrayList<>();
@@ -33,4 +35,14 @@ public class TableModel {
     public void setBooks(List<Book> books) {
         this.books = books;
     }
+
+    public String[] getTitles() {
+        return titles;
+    }
+
+    public void setTitles(String[] titles) {
+        this.titles = titles;
+    }
+    
+    
 }

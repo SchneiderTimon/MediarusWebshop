@@ -9,8 +9,7 @@ package ch.zhaw.mediarus.servlet;
  *
  * @author scnt
  */
-import ch.zhaw.mediarus.controller.BookController;
-import ch.zhaw.mediarus.controller.TableController;
+import ch.zhaw.mediarus.serlvet.MediarusServlet;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 
@@ -22,8 +21,7 @@ public class EmbeddedJettyMain {
 
 		Server server = new Server(7073);
 		ServletContextHandler handler = new ServletContextHandler(server, "/mediarus");
-		handler.addServlet(TableController.class, "/");
-                handler.addServlet(BookController.class, "/book/");
+		handler.addServlet(MediarusServlet.class, "/");
 		server.start();
 
 	}

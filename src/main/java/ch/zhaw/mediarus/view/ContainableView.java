@@ -5,22 +5,12 @@
  */
 package ch.zhaw.mediarus.view;
 
-import java.io.PrintWriter;
-
 /**
  *
  * @author buef
  */
-public class View {
-    Page p;
-    
-    public View() {
+public class ContainableView extends View{
 
-    }
-    
-    
-    
-    public void render(PrintWriter pw) {
-
+    public ContainableView() {
     }
 }

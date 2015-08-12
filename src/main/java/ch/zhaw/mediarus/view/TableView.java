@@ -13,50 +13,48 @@ import java.io.PrintWriter;
  *
  * @author buef
  */
-public class TableView extends View{
+public class TableView extends ContainableView {
 
-    public TableView(String[] columnTitles, TableModel tm) {
-        super();
-        code += "<div id=\"TableView\">\n"
-                +"  <div class=\"form-inline pull-right\">\n"
-                +"      <form action=\"#\" method=\"GET\">\n"
-                +"          <input type=\"text\" class=\"form-control\" id=\"textInputTitle\" placeholder=\"Title\" name=\"search_input_title\" />\n"
-                +"          <input type=\"text\" class=\"form-control\" id=\"textInputAuthor\" placeholder=\"Author\" name=\"search_input_author\" />\n"
-                +"          <input type=\"text\" class=\"form-control\" id=\"textInputCategory\" placeholder=\"Category\" name=\"search_input_category\"/>\n"
-                +"          <button type=\"submit\" class=\"btn btn-default\" id=\"searchSubmitButton\">Search</button>\n"
-                +"      </form>\n"
-                +"  </div>\n"
-                +"  <table class=\"table table-bordered\">\n"
-                +"      <thead>\n"
-                +"          <tr>\n";
-        
-        for(int i = 0; i < columnTitles.length; i++)
-            code+="             <th>"+columnTitles[i]+"</th>\n";
-        
-        code +="            </tr>\n"
-                +"      </thead>\n"
-                +"      <tbody>\n";
-        
-        
+    TableModel tm;
 
-        for(Book b: tm.getBooks()) {
-            code += "           <tr>\n";
-            code+="             <th>"+b.getTitle()+"</th>\n"
-                +"              <th>"+b.getAuthor()+"</th>\n"
-                +"              <th>"+b.getPublisher()+"</th>\n"
-                +"              <th>"+b.getCategorie()+"</th>\n"
-                +"                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"book/?book_id="+ b.getId() +"\"></a></th>";
-            code += "           </tr>\n";
-        }
-        
-     
-        
+    public TableView(TableModel tm) {
+        this.tm = tm;
     }
 
-    
-    public void closeTable() {
-        code+= "</tbody>\n"
+    public void render(PrintWriter pw) {
+        pw.print("<div id=\"TableView\">\n"
+                + "  <div class=\"form-inline pull-right\">\n"
+                + "      <form action=\"#\" method=\"GET\">\n"
+                + "          <input type=\"text\" class=\"form-control\" id=\"textInputTitle\" placeholder=\"Title\" name=\"search_input_title\" />\n"
+                + "          <input type=\"text\" class=\"form-control\" id=\"textInputAuthor\" placeholder=\"Author\" name=\"search_input_author\" />\n"
+                + "          <input type=\"text\" class=\"form-control\" id=\"textInputCategory\" placeholder=\"Category\" name=\"search_input_category\"/>\n"
+                + "          <button type=\"submit\" class=\"btn btn-default\" id=\"searchSubmitButton\">Search</button>\n"
+                + "      </form>\n"
+                + "  </div>\n"
+                + "  <table class=\"table table-bordered\">\n"
+                + "      <thead>\n"
+                + "          <tr>\n");
+
+        for (int i = 0; i < tm.getTitles().length; i++) {
+            pw.print("             <th>" + tm.getTitles()[i] + "</th>\n");
+        }
+
+        pw.print("            </tr>\n"
+                + "      </thead>\n"
+                + "      <tbody>\n");
+        
+        for (Book b : tm.getBooks()) {
+            pw.print("           <tr>\n"
+                     + "             <th>" + b.getTitle() + "</th>\n"
+                    + "              <th>" + b.getAuthor() + "</th>\n"
+                    + "              <th>" + b.getPublisher() + "</th>\n"
+                    + "              <th>" + b.getCategorie() + "</th>\n"
+                    + "                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"book/?book_id=" + b.getId() + "\"></a></th>"
+                    + "           </tr>\n");
+        }
+        
+        pw.print("</tbody>\n"
                 + "</table>\n"
-                + "</div>\n";
+                + "</div>\n");
     }
 }

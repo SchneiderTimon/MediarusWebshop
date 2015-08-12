@@ -12,7 +12,7 @@ import ch.zhaw.mediarus.dao.DAO;
  *
  * @author buef
  */
-public class BookModel {
+public class BookModel extends Model{
     Book b;
 
     public BookModel(Book book) {

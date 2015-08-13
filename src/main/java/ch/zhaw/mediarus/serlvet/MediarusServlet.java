@@ -15,6 +15,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.eclipse.jetty.http.HttpStatus;
 
 /**
@@ -42,6 +43,17 @@ public class MediarusServlet extends HttpServlet {
 
         this.req.set(req);
         this.resp.set(resp);
+        
+        /*
+        // Create a session object if it is already not  created.
+      HttpSession session = getRequest().getSession(true);
+      
+        System.out.println("Session: ");
+      session.setMaxInactiveInterval(80);
+        System.out.println(session.getId());
+        System.out.println(session.getMaxInactiveInterval());
+        System.out.println("");*/
+        
 
         try {
 

@@ -16,7 +16,6 @@ import java.util.logging.Logger;
  * @author buef
  */
 public class View {
-    Page p;
     PrintWriter pw;
     
     public View(){

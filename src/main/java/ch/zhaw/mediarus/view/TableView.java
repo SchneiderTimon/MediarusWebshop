@@ -34,7 +34,7 @@ public class TableView extends ContainableView {
                 + "          <button type=\"submit\" class=\"btn btn-default\" id=\"searchSubmitButton\">Search</button>\n"
                 + "      </form>\n"
                 + "  </div>\n"
-                + "  <table class=\"table table-bordered\">\n"
+                + "  <table class=\"table table-striped\">\n"
                 + "      <thead>\n"
                 + "          <tr>\n");
 
@@ -48,11 +48,11 @@ public class TableView extends ContainableView {
         
         for (Book b : tm.getBooks()) {
             pw.print("           <tr>\n"
-                     + "             <th>" + b.getTitle() + "</th>\n"
-                    + "              <th>" + b.getAuthor() + "</th>\n"
-                    + "              <th>" + b.getPublisher() + "</th>\n"
-                    + "              <th>" + b.getCategorie() + "</th>\n"
-                    + "                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"BookController/?book_id=" + b.getId() + "\"></a></th>"
+                     + "             <th class=\"col-md-7\">" + b.getTitle() + "</th>\n"
+                    + "              <th class=\"col-md-2\">" + b.getAuthor() + "</th>\n"
+                    + "              <th class=\"col-md-1\">" + b.getPublisher() + "</th>\n"
+                    + "              <th class=\"col-md-1\">" + b.getCategorie() + "</th>\n"
+                    + "                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"../BookController/?book_id=" + b.getId() + "\"></a></th>"
                     + "           </tr>\n");
         }
         

@@ -22,17 +22,13 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class Controller {
 
-    DAO dao;
+    protected DAO dao;
     
-    List<ContainableView> content;
+    protected List<ContainableView> content;
     
     public Controller() {
-        System.out.println("3");
-
         this.dao = new DAO();
-        
         this.content = new ArrayList<>();
-        System.out.println("4");
     }
     
     public void setUpContent() {

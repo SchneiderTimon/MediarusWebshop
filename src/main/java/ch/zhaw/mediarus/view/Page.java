@@ -38,7 +38,7 @@ public class Page extends View{
                 + "     <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">"
                 + "     <title>mediarus</title>\n"
                 + "    </head>\n"
-                + "<body>\n"
+                + "<body class=\"bg-info\">\n"
                 + " <div class=\"container\">\n"
                 + " <h1 class=\"text-center\">Mediarus</h1>\n");
         

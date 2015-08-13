@@ -6,8 +6,6 @@
 package ch.zhaw.mediarus.view;
 
 import ch.zhaw.mediarus.model.BookModel;
-import ch.zhaw.mediarus.serlvet.MediarusServlet;
-import java.io.PrintWriter;
 
 /**
  *
@@ -20,10 +18,17 @@ public class BookView extends ContainableView{
         this.bm = bm;
     }
     
+    @Override
     public void render() {
         pw.print("<div id=\"BookView\" class=\"col-md-6 col-md-offset-3\">\n"         
-
-                + "         <h2 class=\"text-center\">"+ bm.getValues()[0] + "</h2>\n"
+                +"<div class=\"form-inline\">\n"
+                
+                + " <h2 class=\"text-center\">"+ bm.getValues()[0] + "</h2>\n"
+                +"<a style=\"font-size: 35px;\"class=\"glyphicon glyphicon-chevron-left pull-left\" href=\"../BookController/\"></a>\n"
+                +"<a style=\"font-size: 35px;\"class=\"glyphicon glyphicon-chevron-right pull-right\" href=\"../BookController/\"></a>\n"
+                + "</div>\n"
+                + "<br>\n"
+                + "<br>\n"
                 +"  <table class=\"table table-bordered\">\n"
                 + "     <tbody>\n");
         
@@ -36,7 +41,7 @@ public class BookView extends ContainableView{
         pw.print("     </tbody>\n"
                 + "</table>\n"
                 +"  <div class=\"form-inline pull-left\">\n"
-                +"      <form action=\"..\" method=\"GET\">\n"
+                +"      <form action=\"../TableController/\" method=\"GET\">\n"
                 +"          <button type=\"submit\" class=\"btn btn-default\" id=\"buyButton\">Back</button>\n"
                 +"      </form>\n"
                 +"  </div>\n"

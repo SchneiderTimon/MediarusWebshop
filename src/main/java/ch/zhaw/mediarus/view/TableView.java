@@ -52,7 +52,7 @@ public class TableView extends ContainableView {
                     + "              <th class=\"col-md-2\">" + b.getAuthor() + "</th>\n"
                     + "              <th class=\"col-md-1\">" + b.getPublisher() + "</th>\n"
                     + "              <th class=\"col-md-1\">" + b.getCategorie() + "</th>\n"
-                    + "                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"../BookController/?book_id=" + b.getId() + "\"></a></th>"
+                    + "                 <th><a class=\"glyphicon glyphicon-info-sign\" href=\"/mediarus/BookController/?book_id=" + b.getId() + "\"></a></th>"
                     + "           </tr>\n");
         }
         

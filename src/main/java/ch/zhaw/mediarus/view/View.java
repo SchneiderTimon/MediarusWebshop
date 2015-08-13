@@ -16,7 +16,7 @@ import java.util.logging.Logger;
  * @author buef
  */
 public class View {
-    PrintWriter pw;
+    protected PrintWriter pw;
     
     public View(){
         try {

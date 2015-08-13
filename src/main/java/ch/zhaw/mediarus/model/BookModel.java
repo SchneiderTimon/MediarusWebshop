@@ -13,7 +13,7 @@ import ch.zhaw.mediarus.dao.DAO;
  * @author buef
  */
 public class BookModel extends Model{
-    Book b;
+    private Book b;
 
     public BookModel(Book book) {
         this.b = book;
@@ -25,5 +25,15 @@ public class BookModel extends Model{
     public String[] getValues() {
         return new String [] {b.getTitle(), b.getAuthor(), b.getPublisher(), b.getReleaseDate(), b.getLanguage(), b.getWeight(), b.getISBN(), b.getNumberOfPages()+"", b.getCategorie(), b.getPrice()+""};
     }
+
+    public Book getB() {
+        return b;
+    }
+
+    public void setB(Book b) {
+        this.b = b;
+    }
+    
+    
     
 }

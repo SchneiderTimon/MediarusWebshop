@@ -24,8 +24,8 @@ public class BookView extends ContainableView{
                 +"<div class=\"form-inline\">\n"
                 
                 + " <h2 class=\"text-center\">"+ bm.getValues()[0] + "</h2>\n"
-                +"<a style=\"font-size: 35px;\"class=\"glyphicon glyphicon-chevron-left pull-left\" href=\"../BookController/\"></a>\n"
-                +"<a style=\"font-size: 35px;\"class=\"glyphicon glyphicon-chevron-right pull-right\" href=\"../BookController/\"></a>\n"
+                +"<a style=\"font-size: 35px;\"class=\"glyphicon glyphicon-chevron-left pull-left\" href=\"/mediarus/BookController/?book_id=" + (bm.getB().getId()-1) + "\"></a>\n"
+                +"<a style=\"font-size: 35px;\"class=\"glyphicon glyphicon-chevron-right pull-right\" href=\"/mediarus/BookController/?book_id=" + (bm.getB().getId()+1) + "\"></a>\n"
                 + "</div>\n"
                 + "<br>\n"
                 + "<br>\n"
@@ -34,19 +34,19 @@ public class BookView extends ContainableView{
         
         for(int i = 1; i < bm.getTitles().length; i++) {
             pw.print("          <tr>\n"
-                    +"             <th>"+bm.getTitles()[i]+"</th>\n"
-                    +"              <th>"+bm.getValues()[i]+"</th>\n"
+                    +"             <th class=\"col-md-4\">"+bm.getTitles()[i]+"</th>\n"
+                    +"              <th class=\"col-md-8\">"+bm.getValues()[i]+"</th>\n"
                     +"      </tr>\n");
         }
         pw.print("     </tbody>\n"
                 + "</table>\n"
                 +"  <div class=\"form-inline pull-left\">\n"
-                +"      <form action=\"../TableController/\" method=\"GET\">\n"
+                +"      <form action=\"/mediarus/TableController/\" method=\"GET\">\n"
                 +"          <button type=\"submit\" class=\"btn btn-default\" id=\"buyButton\">Back</button>\n"
                 +"      </form>\n"
                 +"  </div>\n"
                 +"  <div class=\"form-inline pull-right\">\n"
-                +"      <form action=\"../bucket/\" method=\"GET\">\n"
+                +"      <form action=\"/mediarus/bucket/\" method=\"GET\">\n"
                 +"          <button type=\"submit\" class=\"btn btn-default\" id=\"buyButton\">Add to Bucket</button>\n"
                 +"      </form>\n"
                 +"  </div>\n"

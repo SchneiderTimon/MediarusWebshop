@@ -14,22 +14,23 @@ import java.util.List;
  *
  * @author scnt
  */
-public class Page extends View{
+public class Page extends View {
+
     List<ContainableView> content;
-    
+
     public Page(List<ContainableView> content) throws IOException {
         super();
         this.content = content;
     }
-    
+
     public void beginRender(PrintWriter pw) {
-        
+
     }
-    
+
     public void endRender() {
-        
+
     }
-    
+
     @Override
     public void render() {
         pw.print("<html>\n"
@@ -38,19 +39,30 @@ public class Page extends View{
                 + "     <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css\">"
                 + "     <title>mediarus</title>\n"
                 + "    </head>\n"
-                + "<body class=\"bg-info\">\n"
-                + " <div class=\"container\">\n"
-                + " <h1 class=\"text-center\">Mediarus</h1>\n");
-        
-        for(ContainableView cv: content) {
+                + "<body>\n"
+                + "<div class=\"container\">\n"
+                + "<nav class=\"navbar navbar-default navbar-static-top\">\n"
+                + "	<div class=\"container\">\n"
+                + "         <div class=\"navbar-header\">"
+                + "             <a class=\"navbar-brand\" href=\"#\">MediaRus</a>"
+                + "         </div>"
+                + "         <ul class=\"nav navbar-nav\">\n"
+                + "             <li><a href=\"/mediarus/HomeController/\">Home</a></li>\n"
+                + "             <li><a href=\"/mediarus/TableController/\">Books</a></li>\n"
+                + "             <li><a class=\"glyphicon glyphicon-shopping-cart\" href=\"#\"></a></li>\n"
+                + "         </ul>\n"
+                + "         <ul class=\"nav navbar-icon navbar-right\">"        
+                + "         </ul>"
+                + "	</div>"
+                + "</nav>");
+
+        for (ContainableView cv : content) {
             cv.render();
         }
-        
+
         pw.print("</div>"
                 + "</body>\n"
                 + "</html>\n");
     }
-    
-    
-    
+
 }
